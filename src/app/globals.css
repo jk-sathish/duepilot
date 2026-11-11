@@ -1,0 +1,263 @@
+:root {
+  /* Institutional PayPal-Partnered Financial Palette */
+  --background: #061021;
+  --surface: #0B1930;
+  --surface-elevated: #112442;
+  --surface-hover: #172E54;
+  --border-subtle: #1E365D;
+  --text-primary: #F4F7FB;
+  --text-secondary: #9FB3CE;
+  --text-muted: #6882A6;
+  --accent-ai: #0070E0;      /* PayPal Trust Blue */
+  --accent-blue: #009CDE;    /* PayPal Financial Cyan */
+  --positive: #10B981;       /* Settlement Emerald */
+  --warning: #F59E0B;        /* Advisory Amber */
+  --danger: #EF4444;         /* Risk Coral */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--background);
+  align-items: flex-start;
+}
+
+/* Sticky Institutional Sidebar */
+.app-sidebar {
+  width: 264px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #040B18 0%, #071326 100%);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 14px;
+  flex-shrink: 0;
+  z-index: 50;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 14px;
+}
+
+.app-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.app-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.87rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.app-nav-link:hover {
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+
+.app-nav-link.active {
+  background: linear-gradient(90deg, rgba(0, 112, 224, 0.22) 0%, rgba(0, 156, 222, 0.08) 100%);
+  color: #ffffff;
+  border-color: rgba(0, 156, 222, 0.45);
+  font-weight: 600;
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.page-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 28px 32px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(180deg, #0079EA 0%, #005EA6 100%);
+  color: #ffffff;
+  border: 1px solid rgba(0, 156, 222, 0.4);
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 112, 224, 0.25);
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.94;
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* System-Wide Smooth Loading Bar & Toast */
+@keyframes globalProgressSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.global-loader-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(0, 112, 224, 0.18);
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.global-loader-bar {
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #009CDE, #0070E0, #38BDF8, transparent);
+  animation: globalProgressSlide 1.15s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* AG Grid Institutional Financial Overrides */
+.ag-theme-alpine-dark {
+  --ag-background-color: var(--surface);
+  --ag-header-background-color: #071326;
+  --ag-odd-row-background-color: var(--surface);
+  --ag-row-hover-color: var(--surface-hover);
+  --ag-border-color: var(--border-subtle);
+  --ag-header-foreground-color: var(--text-muted);
+  --ag-foreground-color: var(--text-primary);
+  --ag-font-size: 13.5px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin,
+  .global-loader-bar {
+    animation: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .app-shell {
+    flex-direction: column;
+  }
+  .app-sidebar {
+    width: 100%;
+    height: auto;
+    position: sticky;
+    top: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 12px 16px;
+  }
+  .app-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .page-container {
+    padding: 20px 16px;
+  }
+}
